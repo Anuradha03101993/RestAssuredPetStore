@@ -18,27 +18,25 @@ public class PetStoreUserCreation {
 	
 	
 	
-public void createUsers(String username ) {
-		
-		HashMap data= new HashMap();
-		
+public void createUsers(String username,int id,int userStatus ) {
+			
 		    Map<String, Object> user = new HashMap<>();
-	        user.put("id", 11111);
+	        user.put("id", id);
 	        user.put("username", username);
 	        user.put("firstName", "Anu");
 	        user.put("lastName", "Bharti");
 	        user.put("email", "anutest@gmail.com");
 	        user.put("password", "123456");
 	        user.put("phone", "9876543210");
-	        user.put("userStatus", 1011);
+	        user.put("userStatus", userStatus);
 		
 		
 		Response response=given()
 	    .contentType("application/json")
-	  	.body(data)
+	  	.body(user)
 		
 		.when()
-		.post(BASE_URI+"/user")
+		.post("https://petstore.swagger.io/v2/user")
 		
 		.then()
 		.statusCode(200)
